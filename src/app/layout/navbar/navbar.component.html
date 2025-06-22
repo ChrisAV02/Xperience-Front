@@ -1,1 +1,33 @@
-<p>navbar works!</p>
+<nav class="navbar" [class]="scrolled ? 'navbar scrolled' : 'navbar not-scrolled'">
+  <div class="navbar__container">
+    <a routerLink="/" class="navbar__logo">
+      <img src="assets/logos/XperienceCampus-logo-1.png" alt="Xperience Campus Logo">
+    </a>
+    <div>
+      <button class="navbar__toggle" [class.active]="isMenuActive" (click)="toggleMenu()" (touchend)="toggleMenu()"
+        [attr.aria-label]="isMenuActive ? 'Cerrar menú' : 'Abrir menú'" [attr.aria-expanded]="isMenuActive">
+        <span class="bar top" [class.active]="isMenuActive"></span>
+        <span class="bar middle" [class.active]="isMenuActive"></span>
+        <span class="bar bottom" [class.active]="isMenuActive"></span>
+      </button>
+    </div>
+
+    <div class="navbar__collapse" [class.active]="isMenuActive">
+      <ul class="navbar__menu">
+        @for (item of navItems; track item.name) {
+        <li class="navbar__item">
+          <a [routerLink]="item.href" routerLinkActive="active" class="navbar__link"
+            [routerLinkActiveOptions]="{exact: item.exact === true}">
+            {{item.name}}
+          </a>
+        </li>
+        }
+      </ul>
+      <!-- <button class="navbar__auth" aria-label="Iniciar sesión">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        <span>Inicia Sesión</span>
+      </button> -->
+    </div>
+  </div>
+</nav>
+
