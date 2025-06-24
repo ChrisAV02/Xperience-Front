@@ -1,49 +1,98 @@
 <div class="flex min-h-screen">
-    <!-- Formulario a la izquierda -->
-    <div class="flex-1 flex flex-col justify-center px-12 py-8 bg-gradient-to-br from-[#231C31] to-[#0C233D]">
-      <img src="assets/XperienceCampusLogo.png" class="w-72 relative -left-3" alt="XperienceCampusLogo"/>
-      <p class="mt-2 text-white text-base">Ingresa los datos que se te solicitan para crear tu cuenta.</p>
-      <form class="mt-10 space-y-8">
-        <div>
-          <h3 class="text-sm text-gray-400 mb-2">Información personal</h3>
-          <div class="flex gap-4">
-            <div class="flex-1">
-              <label class="block text-xs text-gray-400 mb-1">Nombres</label>
-              <input type="text" class="w-full rounded-xl bg-[#231C31] text-white px-4 py-3 border border-gray-500 placeholder-gray-400" placeholder="Gabriel Joaquín" />
-            </div>
-            <div class="flex-1">
-              <label class="block text-xs text-gray-400 mb-1">Apellidos</label>
-              <input type="text" class="w-full rounded-xl bg-[#231C31] text-white px-4 py-3 border border-gray-500 placeholder-gray-400" placeholder="Andrade Hidalgo" />
-            </div>
+  <!-- Formulario a la izquierda -->
+  <div
+    class="flex-1 flex flex-col justify-center px-12 py-8 bg-gradient-to-br from-[#231C31] to-[#0C233D]"
+  >
+    <img
+      src="assets/logos/XperienceCampus-logo-2.png"
+      class="w-72 relative"
+      alt="XperienceCampusLogo"
+    />
+    <p class="mt-2 text-white text-base">
+      Ingresa los datos que se te solicitan para crear tu cuenta.
+    </p>
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      class="mt-10 space-y-8"
+    >
+      <div>
+        <h3 class="text-sm text-gray-400 mb-2">Información personal</h3>
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <label class="block text-xs text-gray-400 mb-1">Nombres</label>
+            <input
+              type="text"
+              formControlName="nombres"
+              class="w-full rounded-xl bg-[#231C31] text-white px-4 py-3 border border-gray-500 placeholder-gray-400"
+              placeholder="Gabriel Joaquín"
+            />
+          </div>
+          <div class="flex-1">
+            <label class="block text-xs text-gray-400 mb-1">Apellidos</label>
+            <input
+              type="text"
+              formControlName="apellidos"
+              class="w-full rounded-xl bg-[#231C31] text-white px-4 py-3 border border-gray-500 placeholder-gray-400"
+              placeholder="Andrade Hidalgo"
+            />
           </div>
         </div>
-        <div>
-          <h3 class="text-sm text-gray-400 mb-2">Información de la cuenta</h3>
-          <div class="mb-4">
-            <label class="block text-xs text-gray-400 mb-1">Correo</label>
-            <input type="email" class="w-full rounded-xl bg-[#231C31] text-white px-4 py-3 border border-gray-500 placeholder-gray-400" placeholder="Gabriel_AH03@outlook.com" />
-          </div>
-          <div class="flex gap-4">
-            <div class="flex-1">
-              <label class="block text-xs text-gray-400 mb-1">Contraseña</label>
-              <input type="password" class="w-full rounded-xl bg-[#231C31] text-white px-4 py-3 border border-gray-500 placeholder-gray-400" placeholder="012345678901234567890123" />
-            </div>
-            <div class="flex-1">
-              <label class="block text-xs text-gray-400 mb-1">Repite tu contraseña</label>
-              <input type="password" class="w-full rounded-xl bg-[#231C31] text-white px-4 py-3 border border-gray-500 placeholder-gray-400" placeholder="012345678901234567890123" />
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-center mt-8">
-          <button type="submit" class="bg-white text-[#232C31] font-semibold rounded-full px-10 py-3 text-lg shadow-md hover:bg-gray-200 transition">Crear mi cuenta</button>
-        </div>
-      </form>
-      <div class="mt-16 text-center text-white text-sm">
-        Si ya tienes cuenta, <span class="font-bold">inicia sesión aquí.</span>
       </div>
-    </div>
-    <!-- Imagen a la derecha -->
-    <div class="hidden md:flex flex-1 items-center justify-center bg-cover bg-center" style="background-image: url('https://cdn.pixabay.com/photo/2016/11/08/05/10/students-1807505_1280.jpg');">
-      <!-- Imagen de referencia, puedes cambiarla por la que desees -->
+      <div>
+        <h3 class="text-sm text-gray-400 mb-2">Información de la cuenta</h3>
+        <div class="mb-4">
+          <label class="block text-xs text-gray-400 mb-1">Correo</label>
+          <input
+            type="email"
+            formControlName="email"
+            class="w-full rounded-xl bg-[#231C31] text-white px-4 py-3 border border-gray-500 placeholder-gray-400"
+            placeholder="Gabriel_AH03@outlook.com"
+          />
+        </div>
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <label class="block text-xs text-gray-400 mb-1">Contraseña</label>
+            <input
+              type="password"
+              formControlName="password"
+              class="w-full rounded-xl bg-[#231C31] text-white px-4 py-3 border border-gray-500 placeholder-gray-400"
+              placeholder="012345678901234567890123"
+            />
+          </div>
+          <div class="flex-1">
+            <label class="block text-xs text-gray-400 mb-1"
+              >Repite tu contraseña</label
+            >
+            <input
+              type="password"
+              formControlName="confirmPassword"
+              class="w-full rounded-xl bg-[#231C31] text-white px-4 py-3 border border-gray-500 placeholder-gray-400"
+              placeholder="012345678901234567890123"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center mt-8">
+        <button
+          type="submit"
+          class="bg-white text-[#232C31] font-semibold rounded-full px-10 py-3 text-lg shadow-md hover:bg-gray-200 transition"
+        >
+          Crear mi cuenta
+        </button>
+      </div>
+    </form>
+    <div class="mt-16 text-center text-white text-sm">
+      Si ya tienes cuenta, <span class="font-bold">inicia sesión aquí.</span>
     </div>
   </div>
+  <!-- Imagen a la derecha -->
+  <div
+    class="hidden md:flex flex-1 items-center justify-center bg-cover bg-center"
+    style="
+      background-image: url('https://cdn.pixabay.com/photo/2016/11/08/05/10/students-1807505_1280.jpg');
+    "
+  >
+    <!-- Imagen de referencia, puedes cambiarla por la que desees -->
+  </div>
+</div>
